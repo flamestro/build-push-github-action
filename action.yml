@@ -3,6 +3,11 @@ name: build-push-github-action
 description:
   "publishes a docker image of the Dockerfile in the root of this repository to ghcr.io"
 
+inputs:
+  token:  # id of input
+    description: 'Authentication Token'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -11,7 +16,7 @@ runs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ inputs.token }}
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
