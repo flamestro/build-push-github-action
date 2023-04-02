@@ -9,10 +9,6 @@ This action will then publish your docker image for you in github packages (ghcr
 - name: publish docker image
   uses: flamestro/build-push-github-action@v1.2.0
   with:
-    token: ${{ secrets.PAT_WRITE_PACKAGES }}
+    token: ${{ secrets.GITHUB_TOKEN }}
 ```
-
-you can also pass 
-`username: your-ghcr-username` (defaults to the action actor)
-
-Note: Instead of `PAT_WRITE_PACKAGES` you can also use GITHUB_TOKEN. However, your repo must allow the GITHUB_TOKEN to write packages.
+To use the GITHUB_TOKEN you need to enable write access for it in your repo -> settings -> actions -> general -> read and write access
