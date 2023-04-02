@@ -15,3 +15,4 @@ This action will then publish your docker image for you in github packages (ghcr
 you can also pass 
 `username: your-ghcr-username` (defaults to the action actor)
 
+Note: Instead of `PAT_WRITE_PACKAGES` you can also use GITHUB_TOKEN. However, your repo must allow the GITHUB_TOKEN to write packages.
