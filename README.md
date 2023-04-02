@@ -13,5 +13,5 @@ This action will then publish your docker image for you in github packages (ghcr
 ```
 
 you can also pass 
-`username: your-ghcr-username` (your github username in most cases)
+`username: your-ghcr-username` (defaults to the action actor)
 
