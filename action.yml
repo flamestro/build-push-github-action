@@ -8,25 +8,25 @@ inputs:
     description: 'Authentication Token'
     required: true
   context:
-    description: 'context'
+    description: 'context - defaults to .'
     required: true
     default: .
   file:
-    description: 'file'
+    description: 'Dockerfile - defaults to Dockerfile in Root'
     required: true
     default: ./Dockerfile
   username:
-    description: 'ghcr username'
+    description: 'ghcr username - defaults to actor'
     required: true
     default: ${{ github.actor }}
   image_name:
-    description: 'image_name'
+    description: 'image_name - defaults to repo name'
     required: true
     default: ${{ github.repository }}
   tag:
-    description: 'tag'
+    description: 'tag - defaults to branch'
     required: true
-    default: ${{ github.branch }}
+    default: ${{ github.ref_name }}
 
 runs:
   using: "composite"
