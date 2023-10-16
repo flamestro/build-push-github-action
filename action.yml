@@ -50,5 +50,5 @@ runs:
         context: ${{ inputs.context }}
         file: ${{ inputs.file }}
         push: true
-        tags: ${{ inputs.image_name }}/${{ inputs.tag }}
+        tags: ${{ inputs.image_name }}:${{ inputs.tag }}
         labels: ${{ steps.meta.outputs.labels }}
