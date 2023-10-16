@@ -14,11 +14,19 @@ inputs:
   file:
     description: 'file'
     required: true
-    default: Dockerfile
+    default: ./Dockerfile
   username:
     description: 'ghcr username'
     required: true
     default: ${{ github.actor }}
+  image_name:
+    description: 'image_name'
+    required: true
+    default: ${{ github.actor }}/${{ github.repository }}
+  tag:
+    description: 'tag'
+    required: true
+    default: main
 
 runs:
   using: "composite"
@@ -42,5 +50,5 @@ runs:
         context: ${{ inputs.context }}
         file: ${{ inputs.file }}
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: ${{ inputs.image_name }}/${{ inputs.tag }}
         labels: ${{ steps.meta.outputs.labels }}
