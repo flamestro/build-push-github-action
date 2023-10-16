@@ -22,7 +22,7 @@ inputs:
   image_name:
     description: 'image_name'
     required: true
-    default: ${{ github.actor }}/${{ github.repository }}
+    default: ${{ github.repository }}
   tag:
     description: 'tag'
     required: true
