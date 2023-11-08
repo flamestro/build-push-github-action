@@ -7,8 +7,9 @@ This action will then publish your docker image for you in github packages (ghcr
 
 ``` yaml
 - name: publish docker image
-  uses: flamestro/build-push-github-action@v1.4.2
+  uses: flamestro/build-push-github-action@v1.7.4
   with:
+    username: ${{ github.repository_owner }}
     token: ${{ secrets.GITHUB_TOKEN }}
 ```
-To use the GITHUB_TOKEN you need to enable write access for it in your repo -> settings -> actions -> general -> read and write access
+!!! ATTENTION !!! To use the GITHUB_TOKEN you need to enable write access for it in your repo -> settings -> actions -> general -> read and write access
