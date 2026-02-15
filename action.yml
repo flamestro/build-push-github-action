@@ -36,7 +36,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up QEMU
-      if: contains(inputs.platforms, 'arm') || contains(inputs.platforms, ',')
+      if: contains(inputs.platforms, 'arm')
       uses: docker/setup-qemu-action@v3
 
     - name: Set up Docker Buildx

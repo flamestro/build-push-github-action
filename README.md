@@ -7,7 +7,7 @@ This action will then publish your docker image for you in github packages (ghcr
 
 ``` yaml
 - name: publish docker image
-  uses: flamestro/build-push-github-action@v1.8.0
+  uses: flamestro/build-push-github-action@v1.9.0
   with:
     username: ${{ github.repository_owner }}
     token: ${{ secrets.GITHUB_TOKEN }}
