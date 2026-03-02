@@ -31,6 +31,18 @@ inputs:
     description: 'target platforms (comma separated)'
     required: false
     default: linux/amd64
+  cache:
+    description: 'enable Buildx GHA cache (true/false)'
+    required: false
+    default: 'false'
+  cache_scope:
+    description: 'Buildx cache scope when cache is enabled'
+    required: false
+    default: build-push-github-action
+  cache_mode:
+    description: 'cache export mode (min|max)'
+    required: false
+    default: max
 
 runs:
   using: "composite"
@@ -57,7 +69,21 @@ runs:
         tags: |
           type=raw,value=${{ inputs.tag }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image (cached)
+      if: inputs.cache == 'true'
+      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      with:
+        context: ${{ inputs.context }}
+        file: ${{ inputs.file }}
+        push: true
+        platforms: ${{ inputs.platforms }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha,scope=${{ inputs.cache_scope }}
+        cache-to: type=gha,mode=${{ inputs.cache_mode }},scope=${{ inputs.cache_scope }}
+
+    - name: Build and push Docker image (uncached)
+      if: inputs.cache != 'true'
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
         context: ${{ inputs.context }}
